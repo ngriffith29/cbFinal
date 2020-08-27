@@ -1,0 +1,80 @@
+.body {
+    display: flex;
+    justify-content: center;
+}
+
+
+.jumboTron {
+    margin-top: 10%;
+    width: 100%;
+}
+
+.form-container{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    background-color: #dfe6e9;
+    padding: 2%;
+    width: 45%;
+    border: solid black 1px;
+
+}
+
+.logo{
+    height: 50px;
+}
+
+
+.container {
+    margin-top: 5%;
+  
+}
+
+.h1 {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+
+    width: 350px;
+}
+
+
+.form {
+    background-color: #dfe6e9;
+    padding: 2%;
+    width: 400px;
+    height: 180px;
+    border: solid black 1px;
+    margin-top: 5%;
+    
+   
+}
+
+.formContainer {
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100vh;
+   
+}
+
+
+.buttonReturn {
+    margin-top: 5%;
+  
+}
+
+
+.returnH1 {
+    display: flex;
+    justify-content: center;
+    background-color: red;
+
+}
