@@ -5,40 +5,50 @@ import { InputGroup, InputGroupAddon, InputGroupText, Input, Label,Button } from
 import './home.css'
 
 
-function Ret() {
+function Ret(props) {
 
     const [asset, setAsset] = useState("")
-    const [fname, setfname] = useState("")
-    const [lname, setlname] = useState("")
+    const [email, setemail] = useState("")
 
 
+    const [grade, setGrade] = useState(["Pick A Grade",6, 7, 8])
+    const [pickedGrade, setPickedGrade] = useState(grade[0])
 
+    console.log(grade)
+    console.log(email)
+    console.log(asset)
 
    let inputSet = (e) => {
     setAsset(e.target.value)
    }
 
    let buttonSub = () => {
-       const sendData = {
-           assetTag: asset
-       }
 
        axios.post('http://localhost:3000/forgot/', {
-        firstName: fname,
-        lastName: lname, 
+       email: email,
+        grade: pickedGrade,
         assetTag: asset,
         
 
       })
       .then(function (response) {
         setAsset("")
+        setPickedGrade(grade[0])
+        setemail("")
         console.log(response);
       })
       .catch(function (error) {
         console.log(error);
       });
+      props.history.push('/');
 
    }
+
+
+   let handleChange = (event) => {
+    setPickedGrade(event.target.value)
+
+}
  
     return (
 
@@ -46,18 +56,28 @@ function Ret() {
        <div className="returnH1">
         <h1>To checkout your chromebook scan the asset ID</h1>
         </div>   
-        <div className="formContainer">
+        <div className="formContainer ">
          
         <div className="form-newline">
-        <div className='form'>
+        <div className='form form-height'>
 
             
-        <Label for="firstname">First Name</Label>
-          <Input  value={fname} onChange={((E) => {setfname(E.target.value)})} type="text" name="email" id="firstname" placeholder="scan your chromes asset Id" />
+        <Label for="firstname">Enter Your Email Address</Label>
+          <Input  value={email} onChange={((E) => {setemail(E.target.value)})} type="text" name="email" id="firstname" placeholder="enter your email" />
 
-          <Label for="Lastname">Last name</Label>
-          <Input  value={lname} onChange={((e) => {setlname(e.target.value)})} type="text" name="email" id="firstname" placeholder="scan your chromes asset Id" />
 
+      
+                <Label for="grade">Pick Your Grade</Label>
+
+                <Input type="select" id="grade" value={pickedGrade} onChange={handleChange} >
+                    {
+                        grade.map((grade) => {
+                            return <option value={grade}>{grade}</option>
+                        })
+                    }
+                </Input>
+
+             
 
 
 

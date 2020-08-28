@@ -5,7 +5,7 @@ import { InputGroup, InputGroupAddon, InputGroupText, Input, Label,Button } from
 import './home.css'
 
 
-function Ret() {
+function Ret(props) {
     const [data, setData] = useState([])
     const [asset, setAsset] = useState("")
     const [didSub, setDidSub] = useState(false)
@@ -41,6 +41,7 @@ function Ret() {
        setAsset('')
    }
 
+   props.history.push('/');
     
  }
 

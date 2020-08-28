@@ -16,13 +16,13 @@ const typesOfCheckout = [{
     img: 'https://blog.qlik.com/assets/uploads/images/posts/mary-pitzer/duh-xlarge-1200x630.jpg'
 },
 {
-    title: 'Did you break your chromebook? ',
+    title: 'Did your chromebook break? ',
     link: '/broken',
     buttonText: 'Click Here if you broke your chromebook',
     img: Broken
 },
 {
-    title: 'Returning your chromebook? ',
+    title: 'Returning a loaner chromebook? ',
     link: '/return',
     buttonText: 'Click Here to return your chromebook',
     img: Return

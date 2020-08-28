@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Redirect, Link } from "react-router-dom";
 import axios from 'axios'
 
 
@@ -45,7 +46,8 @@ let handleIssues = (event) => {
           setPickedGrade(grade[0])
           setInputer("")
           setPickedIssue(issues[0])
-          props.history.goBack()
+          props.history.push('/forgot');
+       
     }
 
 
@@ -91,8 +93,9 @@ let handleIssues = (event) => {
                     }
                 </Input>
                 </FormGroup>
-
-                <Button type="submit" color="primary">Submit and get new Chrome</Button>
+              
+                <Button  color="primary">Submit and get new Chrome</Button>
+               
 
             </Form>
         </div>

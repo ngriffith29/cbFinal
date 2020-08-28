@@ -20,6 +20,7 @@ form {
     padding: 2%;
     width: 45%;
     border: solid black 1px;
+  
 
 }
 
@@ -67,7 +68,7 @@ form {
 
 
 .buttonReturn {
-    margin-top: 5%;
+    margin-top: 2%;
   
 }
 
@@ -77,4 +78,9 @@ form {
     justify-content: center;
     background-color: red;
 
+}
+
+.form-height {
+    height: 320px;
+    width: 700px;
 }
