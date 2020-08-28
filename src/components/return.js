@@ -16,7 +16,7 @@ function Ret() {
         })
     
     
-    },[didSub]);
+    },[]);
 
 
 
@@ -25,45 +25,27 @@ function Ret() {
    }
 
    let buttonSub = () => {
-       let num = []
-       let doesItExist = true
-
+    let listOfAssets = []
     data.map((e) => {
-        let inputNumber = parseInt(asset)
-
-        
-       if(e.assetTag === inputNumber){
-        // axios.delete(`http://localhost:3000/forgot/${e._id}`)
-        // .then(res => {
-        //     setAsset('')
-           
-        // })
-        console.log('deleted')
-       
-       }  else {
-           num.push(e.assetTag)
-       }
-    
-
+        listOfAssets.push(e.assetTag)
     })
 
-    let numConvert = parseInt(asset)
-  let c = num.includes(typeof asset)
-console.log(c)
  
-   
-
-
-
-
-
-
-
-
-
-
-
+   if(listOfAssets.includes(parseInt(asset))){
+    axios.delete(`http://localhost:3000/forgot/${asset}`)
+    .then(res => {
+        setAsset('')
+    })
+   }else{
+       alert('re-scan your asset ID')
+       setAsset('')
    }
+
+    
+ }
+
+console.log(data)
+
  
     return (
 
