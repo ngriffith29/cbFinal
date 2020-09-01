@@ -54,7 +54,7 @@ function Ret(props) {
 
         <div className="bodyReturn">
        <div className="returnH1">
-        <h1>To checkout your chromebook scan the asset ID</h1>
+        <h1>To checkout your temporary chromebook scan the asset ID</h1>
         </div>   
         <div className="formContainer ">
          

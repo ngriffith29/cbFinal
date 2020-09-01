@@ -10,69 +10,87 @@ function Broken(props) {
     //     props.history.goBack()
     // }
 
-    const [grade, setGrade] = useState(["Pick A Grade",6, 7, 8])
+    const [grade, setGrade] = useState(["Pick A Grade", 6, 7, 8])
     const [pickedGrade, setPickedGrade] = useState(grade[0])
-    const [issues, setIssues] = useState(["Pick an Issue","Broken Screen", "Broken Keys", 'fried motherboard'])
+    const [issues, setIssues] = useState(["Pick an Issue", "Broken Screen", "Broken Keys", 'fried motherboard'])
     const [pickedIssue, setPickedIssue] = useState(issues[0])
-    const[input, setInputer] = useState("")
+    const [input, setInputer] = useState("")
 
-let handleInputChange = (event) => {
-    setInputer(event.target.value)
-    
-}
+    let handleInputChange = (event) => {
+        setInputer(event.target.value)
+
+    }
 
     let handleChange = (event) => {
         setPickedGrade(event.target.value)
 
     }
-let handleIssues = (event) => {
-    setPickedIssue(event.target.value)
-}
+    let handleIssues = (event) => {
+        setPickedIssue(event.target.value)
+    }
     let handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:3000/students/', {
-            assetTag: input,
-            brokeReason: pickedIssue,
-            grade: pickedGrade
+        // axios.post('http://localhost:3000/students/', {
+        //     assetTag: input,
+        //     brokeReason: pickedIssue,
+        //     grade: pickedGrade
 
-          })
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        //   })
+        //   .then(function (response) {
+        //     console.log(response);
+        //   })
+        //   .catch(function (error) {
+        //     console.log(error);
+        //   });
 
-          setPickedGrade(grade[0])
-          setInputer("")
-          setPickedIssue(issues[0])
-          props.history.push('/forgot');
-       
+        axios.all([
+            axios.post('http://localhost:3000/lifetime/', {
+                assetTag: input,
+                brokeReason: pickedIssue,
+                grade: pickedGrade
+            }),
+            axios.post('http://localhost:3000/students/', {
+                assetTag: input,
+                brokeReason: pickedIssue,
+                grade: pickedGrade
+            })
+        ])
+            .then(axios.spread((data1, data2) => {
+                // output of req.
+                console.log('data1', data1, 'data2', data2)
+            }));
+
+
+        setPickedGrade(grade[0])
+        setInputer("")
+        setPickedIssue(issues[0])
+        props.history.push('/forgot');
+
     }
 
 
     return (
         <div className="form-container">
-            <Form onSubmit={handleSubmit}>
-            <FormGroup>
-            <Label htmlFor="asset">Scan Your Asset Id</Label>
-            <Input id="asset" onChange={handleInputChange} value={input}   />
+            <Form onSubmit={e => { e.preventDefault() }}>
+                <FormGroup>
+                    <Label htmlFor="asset">Scan Your Asset Id</Label>
+                    <Input id="asset" onChange={handleInputChange} value={input} />
 
-            </FormGroup>
+                </FormGroup>
 
 
 
 
                 <FormGroup>
-                <Label for="grade">Pick Your Grade</Label>
+                    <Label for="grade">Pick Your Grade</Label>
 
-                <Input type="select" id="grade" value={pickedGrade} onChange={handleChange} >
-                    {
-                        grade.map((grade) => {
-                            return <option value={grade}>{grade}</option>
-                        })
-                    }
-                </Input>
+                    <Input type="select" id="grade" value={pickedGrade} onChange={handleChange} >
+                        {
+                            grade.map((grade) => {
+                                return <option value={grade}>{grade}</option>
+                            })
+                        }
+                    </Input>
 
                 </FormGroup>
 
@@ -82,20 +100,20 @@ let handleIssues = (event) => {
 
 
 
-                    <FormGroup>
-                <Label htmlFor="issues">Pick your Problem</Label>
+                <FormGroup>
+                    <Label htmlFor="issues">Pick your Problem</Label>
 
-                <Input type="select" id="issues" value={pickedIssue} onChange={handleIssues} >
-                    {
-                     issues.map((grade) => {
-                            return <option value={grade}>{grade}</option>
-                        })
-                    }
-                </Input>
+                    <Input type="select" id="issues" value={pickedIssue} onChange={handleIssues} >
+                        {
+                            issues.map((grade) => {
+                                return <option value={grade}>{grade}</option>
+                            })
+                        }
+                    </Input>
                 </FormGroup>
-              
-                <Button  color="primary">Submit and get new Chrome</Button>
-               
+
+                <Button onClick={handleSubmit} color="primary">Submit and get new Chrome</Button>
+
 
             </Form>
         </div>
