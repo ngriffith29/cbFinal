@@ -15,10 +15,15 @@ function Broken(props) {
     const [issues, setIssues] = useState(["Pick an Issue", "Broken Screen", "Broken Keys", 'fried motherboard'])
     const [pickedIssue, setPickedIssue] = useState(issues[0])
     const [input, setInputer] = useState("")
+    const [email, setEmail] = useState("")
 
     let handleInputChange = (event) => {
         setInputer(event.target.value)
 
+    }
+
+    let handleEmail = (event) => {
+        setEmail(event.target.value)
     }
 
     let handleChange = (event) => {
@@ -47,12 +52,14 @@ function Broken(props) {
             axios.post('http://localhost:3000/lifetime/', {
                 assetTag: input,
                 brokeReason: pickedIssue,
-                grade: pickedGrade
+                grade: pickedGrade,
+                email: email
             }),
             axios.post('http://localhost:3000/students/', {
                 assetTag: input,
                 brokeReason: pickedIssue,
-                grade: pickedGrade
+                grade: pickedGrade,
+                email: email
             })
         ])
             .then(axios.spread((data1, data2) => {
@@ -72,6 +79,14 @@ function Broken(props) {
     return (
         <div className="form-container">
             <Form onSubmit={e => { e.preventDefault() }}>
+
+            <FormGroup>
+                    <Label htmlFor="email">Enter your email address</Label>
+                    <Input id="email" onChange={handleEmail} value={email} />
+
+                </FormGroup>
+
+
                 <FormGroup>
                     <Label htmlFor="asset">Scan Your Asset Id</Label>
                     <Input id="asset" onChange={handleInputChange} value={input} />
