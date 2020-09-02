@@ -12,7 +12,7 @@ function Ret(props) {
     useEffect(() => {    
         axios.get(`https://chromeapi.herokuapp.com/forgot`)
         .then(res => {
-           setData(res.data
+           setData(res.data)
         })
     
     
