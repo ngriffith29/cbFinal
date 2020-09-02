@@ -10,7 +10,7 @@ function Ret(props) {
     const [asset, setAsset] = useState("")
     const [didSub, setDidSub] = useState(false)
     useEffect(() => {    
-        axios.get(`http://localhost:3000/forgot`)
+        axios.get(`https://chromeapi.herokuapp.com/forgot`)
         .then(res => {
            setData(res.data)
         })
@@ -32,7 +32,7 @@ function Ret(props) {
 
  
    if(listOfAssets.includes(parseInt(asset))){
-    axios.delete(`http://localhost:3000/forgot/${asset}`)
+    axios.delete(`https://chromeapi.herokuapp.com/forgot/${asset}`)
     .then(res => {
         setAsset('')
     })

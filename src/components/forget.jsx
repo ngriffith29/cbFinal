@@ -24,7 +24,7 @@ function Ret(props) {
 
    let buttonSub = () => {
 
-       axios.post('http://localhost:3000/forgot/', {
+       axios.post('https://chromeapi.herokuapp.com/forgot/', {
        email: email,
         grade: pickedGrade,
         assetTag: asset,

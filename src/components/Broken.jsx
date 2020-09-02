@@ -10,9 +10,9 @@ function Broken(props) {
     //     props.history.goBack()
     // }
 
-    const [grade, setGrade] = useState(["Pick A Grade", 6, 7, 8])
+    const [grade, setGrade] = useState(["Pick A Grade", 0,1,2,3,4,5, 6, 7, 8,9,10,11,12])
     const [pickedGrade, setPickedGrade] = useState(grade[0])
-    const [issues, setIssues] = useState(["Pick an Issue", "Broken Screen", "Broken Keys", 'fried motherboard'])
+    const [issues, setIssues] = useState(["Pick an Issue", "Broken screen", "Broken keys", 'Broken mouse','Wont charge'])
     const [pickedIssue, setPickedIssue] = useState(issues[0])
     const [input, setInputer] = useState("")
     const [email, setEmail] = useState("")
@@ -49,13 +49,13 @@ function Broken(props) {
         //   });
 
         axios.all([
-            axios.post('http://localhost:3000/lifetime/', {
+            axios.post('https://chromeapi.herokuapp.com/lifetime/', {
                 assetTag: input,
                 brokeReason: pickedIssue,
                 grade: pickedGrade,
                 email: email
             }),
-            axios.post('http://localhost:3000/students/', {
+            axios.post('https://chromeapi.herokuapp.com/students/', {
                 assetTag: input,
                 brokeReason: pickedIssue,
                 grade: pickedGrade,
