@@ -11,7 +11,7 @@ function Ret(props) {
     const [email, setemail] = useState("")
 
 
-    const [grade, setGrade] = useState(["Pick A Grade",6, 7, 8])
+    const [grade, setGrade] = useState(["Pick A Grade",0,1,2,3,4,5,6, 7, 8,9,10,11,12])
     const [pickedGrade, setPickedGrade] = useState(grade[0])
 
     console.log(grade)
