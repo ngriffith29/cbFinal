@@ -62,8 +62,8 @@ function Ret(props) {
         <div className='form form-height'>
 
             
-        <Label for="firstname">Enter Your Email Address</Label>
-          <Input  value={email} onChange={((E) => {setemail(E.target.value)})} type="text" name="email" id="firstname" placeholder="enter your email" />
+        <Label for="firstname">Enter Your FULL Email Address last.first@bellevueschools.org</Label>
+          <Input required value={email} onChange={((E) => {setemail(E.target.value)})} type="email" name="email" id="firstname" placeholder="enter your email" />
 
 
       
